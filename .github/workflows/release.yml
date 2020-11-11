@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup dotnet 5.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "5.0.x"
+
+      - run: dotnet publish ./SamFirm/SamFirm.csproj -c Release -p:PublishProfile=./SamFirm/Properties/PublishProfiles/linux-x64.pubxml
+      - run: dotnet publish ./SamFirm/SamFirm.csproj -c Release -p:PublishProfile=./SamFirm/Properties/PublishProfiles/win-x64.pubxml
+      - run: dotnet publish ./SamFirm/SamFirm.csproj -c Release -p:PublishProfile=./SamFirm/Properties/PublishProfiles/win-x64-single.pubxml
+
+      - run: mv ./SamFirm/dist/linux-x64/SamFirm ./linux-x64
+      - run: mv ./SamFirm/dist/win-x64/SamFirm.exe ./win-x64.exe
+      - run: mv ./SamFirm/dist/win-x64-single/SamFirm.exe ./win-x64-single.exe
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: |
+            linux-x64
+            win-x64.exe
+            win-x64-single.exe

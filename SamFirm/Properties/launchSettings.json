@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SamFirm.NET": {
+      "commandName": "Project",
+      "commandLineArgs": "--model SM-F916N --region KOO"
+    }
+  }
+}

@@ -9,7 +9,7 @@ A streaming downloader, decryptor and extractor of Samsung firmware.
 1. Download the executable from [Release](https://github.com/jesec/samfirm.net/releases).
 1. Run it with `--region` and `--model` arguments.
 
-Windows users may choose the smaller but not-self-contained variant if .NET runtime is present.
+Windows users may choose the smaller but not-self-contained variant if [.NET runtime](https://dotnet.microsoft.com/download/dotnet/5.0/runtime) is present.
 
 ### Build
 

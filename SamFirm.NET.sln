@@ -6,16 +6,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamFirm", "SamFirm\SamFirm.
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
-		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2642C974-0B2C-4B7F-9308-36DBFBCB434A}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{2642C974-0B2C-4B7F-9308-36DBFBCB434A}.Debug|x64.ActiveCfg = Debug|x64
 		{2642C974-0B2C-4B7F-9308-36DBFBCB434A}.Debug|x64.Build.0 = Debug|x64
-		{2642C974-0B2C-4B7F-9308-36DBFBCB434A}.Release|Any CPU.ActiveCfg = Release|x64
 		{2642C974-0B2C-4B7F-9308-36DBFBCB434A}.Release|x64.ActiveCfg = Release|x64
 		{2642C974-0B2C-4B7F-9308-36DBFBCB434A}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection

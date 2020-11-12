@@ -18,10 +18,12 @@ jobs:
           dotnet-version: "5.0.x"
 
       - run: dotnet publish ./SamFirm/SamFirm.csproj -c Release -p:PublishProfile=./SamFirm/Properties/PublishProfiles/linux-x64.pubxml
+      - run: dotnet publish ./SamFirm/SamFirm.csproj -c Release -p:PublishProfile=./SamFirm/Properties/PublishProfiles/macos-x64.pubxml
       - run: dotnet publish ./SamFirm/SamFirm.csproj -c Release -p:PublishProfile=./SamFirm/Properties/PublishProfiles/win-x64.pubxml
       - run: dotnet publish ./SamFirm/SamFirm.csproj -c Release -p:PublishProfile=./SamFirm/Properties/PublishProfiles/win-x64-single.pubxml
 
       - run: mv ./SamFirm/dist/linux-x64/SamFirm ./linux-x64
+      - run: mv ./SamFirm/dist/macos-x64/SamFirm ./macos-x64
       - run: mv ./SamFirm/dist/win-x64/SamFirm.exe ./win-x64.exe
       - run: mv ./SamFirm/dist/win-x64-single/SamFirm.exe ./win-x64-single.exe
 
@@ -32,5 +34,6 @@ jobs:
         with:
           files: |
             linux-x64
+            macos-x64
             win-x64.exe
             win-x64-single.exe

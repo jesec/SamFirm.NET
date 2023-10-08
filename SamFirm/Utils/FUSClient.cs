@@ -30,7 +30,7 @@ namespace SamFirm.Utils
         public static int DownloadBinary(string path, string file, string saveTo)
         {
             long num = 0L;
-            HttpWebRequest wr = FUSRequest.Create("http://cloud-neofussvr.sslcs.cdngc.net/NF_DownloadBinaryForMass.do?file=" + path + file);
+            HttpWebRequest wr = FUSRequest.Create("http://cloud-neofussvr.samsungmobile.com/NF_DownloadBinaryForMass.do?file=" + path + file);
             wr.Method = "GET";
             wr.Timeout = 0x61a8;
             wr.ReadWriteTimeout = 0x61a8;

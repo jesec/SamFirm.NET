@@ -31,6 +31,35 @@ namespace SamFirm.Utils
                     )
                 );
 
+            // Add additional fields for EUX
+            if (region == "EUX")
+            {
+                document.Root.Element("FUSBody").Element("Put").Add(
+                    new XElement("DEVICE_AID_CODE",
+                        new XElement("Data", region)),
+                    new XElement("DEVICE_CC_CODE",
+                        new XElement("Data", "DE")),
+                    new XElement("MCC_NUM",
+                        new XElement("Data", "262")),
+                    new XElement("MNC_NUM",
+                        new XElement("Data", "01"))
+                );
+            }
+            // Add additional fields for EUY
+            else if (region == "EUY")
+            {
+                document.Root.Element("FUSBody").Element("Put").Add(
+                    new XElement("DEVICE_AID_CODE",
+                        new XElement("Data", region)),
+                    new XElement("DEVICE_CC_CODE",
+                        new XElement("Data", "RS")),
+                    new XElement("MCC_NUM",
+                        new XElement("Data", "220")),
+                    new XElement("MNC_NUM",
+                        new XElement("Data", "01"))
+                );
+            }
+
             return document.ToString();
         }
 

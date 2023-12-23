@@ -69,8 +69,8 @@ namespace SamFirm.Utils
 
     internal static class Auth
     {
-        private const string NONCE_KEY = "hqzdurufm2c8mf6bsjezu1qgveouv7c7";
-        private const string AUTH_KEY = "w13r4cvf4hctaujv";
+        private const string NONCE_KEY = "vicopx7dqu06emacgpnpy8j8zwhduwlh";
+        private const string AUTH_KEY = "9u7qab84rpc16gvk";
 
         public static string DecryptNonce(string nonce)
         {

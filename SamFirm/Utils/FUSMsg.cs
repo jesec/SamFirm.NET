@@ -4,7 +4,7 @@ namespace SamFirm.Utils
 {
     internal static class Msg
     {
-        public static string GetBinaryInformMsg(string version, string region, string model, string nonce)
+        public static string GetBinaryInformMsg(string version, string region, string model, string imei, string nonce)
         {
             XDocument document = new XDocument(
                 new XElement("FUSMsg",
@@ -21,7 +21,7 @@ namespace SamFirm.Utils
                             new XElement("CLIENT_VERSION",
                                 new XElement("Data", "4.3.23123_1")),
                             new XElement("DEVICE_IMEI_PUSH",
-                                new XElement("Data", "00000000000000")),
+                                new XElement("Data", imei)),
                             new XElement("DEVICE_FW_VERSION",
                                 new XElement("Data", version)),
                             new XElement("DEVICE_LOCAL_CODE",

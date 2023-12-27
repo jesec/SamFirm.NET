@@ -7,7 +7,9 @@ A streaming downloader, decryptor and extractor of Samsung firmware.
 ### Run
 
 1. Download the executable from [Release](https://github.com/jesec/samfirm.net/releases).
-1. Run it with `--region` and `--model` arguments.
+1. Run it with `--region` , `--model` and `--i` arguments.
+1. Region, Model and IMEI need to be valid for the target device, otherwise FUS will respond with Err 408
+1. If you dont have the IMEI of a certain device you want, usually googling <model> "imei swappa" will bring up valid ones
 
 Windows users may choose the smaller but not-self-contained variant if [.NET runtime](https://dotnet.microsoft.com/download/dotnet/5.0/runtime) is present.
 
@@ -21,7 +23,7 @@ Windows users may choose the smaller but not-self-contained variant if [.NET run
 ## Example
 
 ```
-> ./SamFirm -m SM-F916N -r KOO
+> ./SamFirm -m SM-F916N -r KOO -i <valid imei>
 
   Model: SM-F916N
   Region: KOO

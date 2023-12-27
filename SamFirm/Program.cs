@@ -17,6 +17,9 @@ namespace SamFirm
 
             [Option('r', "region", Required = true)]
             public string Region { get; set; }
+
+            [Option('i', "imei", Required = true)]
+            public string imei { get; set; }
         }
 
         private static string GetLatestVersion(string region, string model)
@@ -32,14 +35,16 @@ namespace SamFirm
         {
             string model = "";
             string region = "";
+            string imei = "";
             Parser.Default.ParseArguments<Options>(args)
                 .WithParsed(o =>
                 {
                     model = o.Model;
                     region = o.Region;
+                    imei = o.imei;
                 });
 
-            if (model.Length == 0 || region.Length == 0)
+            if (model.Length == 0 || region.Length == 0 || imei.Length == 0)
             {
                 return;
             }
@@ -67,7 +72,7 @@ namespace SamFirm
 
             string binaryInfoXMLString;
             responseStatus = Utils.FUSClient.DownloadBinaryInform(
-                Utils.Msg.GetBinaryInformMsg(version, region, model, Utils.FUSClient.NonceDecrypted), out binaryInfoXMLString);
+                Utils.Msg.GetBinaryInformMsg(version, region, model,imei, Utils.FUSClient.NonceDecrypted), out binaryInfoXMLString);
 
             XDocument binaryInfo = XDocument.Parse(binaryInfoXMLString);
             long binaryByteSize = long.Parse(binaryInfo.XPathSelectElement("./FUSMsg/FUSBody/Put/BINARY_BYTE_SIZE/Data").Value);

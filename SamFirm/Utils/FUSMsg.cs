@@ -4,7 +4,7 @@ namespace SamFirm.Utils
 {
     internal static class Msg
     {
-        public static string GetBinaryInformMsg(string version, string region, string model, string nonce)
+        public static string GetBinaryInformMsg(string version, string region, string model, string imei, string nonce)
         {
             XDocument document = new XDocument(
                 new XElement("FUSMsg",
@@ -18,6 +18,10 @@ namespace SamFirm.Utils
                                 new XElement("Data", "1")),
                             new XElement("CLIENT_PRODUCT",
                                 new XElement("Data", "Smart Switch")),
+                            new XElement("CLIENT_VERSION",
+                                new XElement("Data", "4.3.23123_1")),
+                            new XElement("DEVICE_IMEI_PUSH",
+                                new XElement("Data", imei)),
                             new XElement("DEVICE_FW_VERSION",
                                 new XElement("Data", version)),
                             new XElement("DEVICE_LOCAL_CODE",
@@ -30,6 +34,35 @@ namespace SamFirm.Utils
                         )
                     )
                 );
+
+            // Add additional fields for EUX
+            if (region == "EUX")
+            {
+                document.Root.Element("FUSBody").Element("Put").Add(
+                    new XElement("DEVICE_AID_CODE",
+                        new XElement("Data", region)),
+                    new XElement("DEVICE_CC_CODE",
+                        new XElement("Data", "DE")),
+                    new XElement("MCC_NUM",
+                        new XElement("Data", "262")),
+                    new XElement("MNC_NUM",
+                        new XElement("Data", "01"))
+                );
+            }
+            // Add additional fields for EUY
+            else if (region == "EUY")
+            {
+                document.Root.Element("FUSBody").Element("Put").Add(
+                    new XElement("DEVICE_AID_CODE",
+                        new XElement("Data", region)),
+                    new XElement("DEVICE_CC_CODE",
+                        new XElement("Data", "RS")),
+                    new XElement("MCC_NUM",
+                        new XElement("Data", "220")),
+                    new XElement("MNC_NUM",
+                        new XElement("Data", "01"))
+                );
+            }
 
             return document.ToString();
         }
